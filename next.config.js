@@ -34,6 +34,7 @@ const nextConfig = {
     return webpackConfig
   },
   reactStrictMode: true,
+  devIndicators: false,
   redirects,
 }
 

@@ -22,8 +22,12 @@ export const Logo = (props: Props) => {
       loading={loading}
       fetchPriority={priority}
       decoding="async"
-      className={clsx('max-w-[29.375rem] w-full h-[70px]', className)}
       src="/assets/NetNetLead_crop.jpeg"
+      className={clsx(
+        // ✅ Mobile-first sizing
+        'h-11 sm:h-13 md:h-15 w-auto',
+        className
+      )}
     />
   )
 }

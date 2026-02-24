@@ -1,8 +1,12 @@
 import type { Field } from 'payload'
+import { Banner } from '../blocks/Banner/config'
+import { MediaBlock } from '../blocks/MediaBlock/config'
 
 import {
   FixedToolbarFeature,
   HeadingFeature,
+  BlocksFeature,
+  HorizontalRuleFeature,
   InlineToolbarFeature,
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
@@ -46,6 +50,10 @@ export const hero: Field = {
           return [
             ...rootFeatures,
             HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            BlocksFeature({
+			blocks: [Banner, MediaBlock],
+			}),
+			HorizontalRuleFeature(),
             FixedToolbarFeature(),
             InlineToolbarFeature(),
           ]

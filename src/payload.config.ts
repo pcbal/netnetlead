@@ -14,19 +14,25 @@ import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
+//import Logo from './admin/components/Logo'
+//import Icon from './admin/components/Icon'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
 export default buildConfig({
-  admin: {
-    components: {
-      // The `BeforeLogin` component renders a message that you see while logging into your admin panel.
-      // Feel free to delete this at any time. Simply remove the line below.
-      beforeLogin: ['@/components/BeforeLogin'],
-      // The `BeforeDashboard` component renders the 'welcome' block that you see after logging into your admin panel.
-      // Feel free to delete this at any time. Simply remove the line below.
-      beforeDashboard: ['@/components/BeforeDashboard'],
+  admin: { 
+	components: {
+      graphics: {
+        // Syntax: 'path/to/file#ExportName'
+        Logo: './graphics/Logo#Logo',
+        Icon: './graphics/Icon#Icon', 
+      },
+    },
+    meta: {
+      //favicon: '/assets/favicon.svg',
+     // ogImage: '/assets/ogImage.png',
+      titleSuffix: 'Net Network Lead',
     },
     importMap: {
       baseDir: path.resolve(dirname),

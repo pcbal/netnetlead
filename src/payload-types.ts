@@ -600,6 +600,7 @@ export interface FormBlock {
     };
     [k: string]: unknown;
   } | null;
+  status?: ('new' | 'contacted' | 'in-progress') | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'formBlock';
@@ -818,6 +819,7 @@ export interface FormSubmission {
         id?: string | null;
       }[]
     | null;
+  status?: ('new' | 'contacted' | 'in-progress') | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -1182,6 +1184,7 @@ export interface FormBlockSelect<T extends boolean = true> {
   form?: T;
   enableIntro?: T;
   introContent?: T;
+  status?: T;
   id?: T;
   blockName?: T;
 }
@@ -1515,6 +1518,7 @@ export interface FormSubmissionsSelect<T extends boolean = true> {
         value?: T;
         id?: T;
       };
+  status?: T;
   updatedAt?: T;
   createdAt?: T;
 }

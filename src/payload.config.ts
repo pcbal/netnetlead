@@ -14,8 +14,6 @@ import { Header } from './Header/config'
 import { plugins } from './plugins'
 import { defaultLexical } from '@/fields/defaultLexical'
 import { getServerSideURL } from './utilities/getURL'
-//import Logo from './admin/components/Logo'
-//import Icon from './admin/components/Icon'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -27,11 +25,11 @@ export default buildConfig({
         // Syntax: 'path/to/file#ExportName'
         Logo: './graphics/Logo#Logo',
         Icon: './graphics/Icon#Icon', 
-      },
+      },      
     },
     meta: {
-      //favicon: '/assets/favicon.svg',
-     // ogImage: '/assets/ogImage.png',
+      //favicon: '/public/assets/favicon.svg',
+      //ogImage: '/public/assets/ogImage.png',
       titleSuffix: 'Net Network Lead',
     },
     importMap: {
@@ -66,7 +64,7 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.DATABASE_URL || '',
   }),
-  collections: [Pages, Posts, Media, Categories, Users],
+  collections: [Pages, Posts, Media, Categories, Users,],  
   cors: [getServerSideURL()].filter(Boolean),
   globals: [Header, Footer],
   plugins,

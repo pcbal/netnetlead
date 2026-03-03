@@ -222,3 +222,20 @@ html[data-theme='dark'],
 html[data-theme='light'] {
   opacity: initial;
 }
+
+/* Added for header black strip removal. This forces the page content to sit exactly at the top */
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure the first element of the page has no accidental top margin */
+main > *:first-child {
+  margin-top: 0 !important;
+}
+
+/* Fix for the iOS Safari "Safe Area" which often creates a black bar at the notch */
+header {
+  padding-top: env(safe-area-inset-top);
+  min-height: calc(60px + env(safe-area-inset-top));
+}

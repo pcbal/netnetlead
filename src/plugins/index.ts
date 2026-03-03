@@ -58,6 +58,37 @@ export const plugins: Plugin[] = [
     fields: {
       payment: false,
     },
+    formSubmissionOverrides: {
+        // This MERGES your custom logic into the existing 'form-submissions' slug
+        access: {
+      update: ({ req: { user } }) => !!user, // Returns true if a user is logged in
+      // You can also use: update: () => true (but less secure)
+    },
+        fields: ({ defaultFields }) => [
+          ...defaultFields,
+          {
+        name: 'status',
+        type: 'select',
+        defaultValue: 'new',
+        options: [
+          { label: 'New', value: 'new' },
+          { label: 'Contacted', value: 'contacted' },
+          { label: 'In Progress', value: 'in-progress' },
+        ],
+      },
+          {
+            name: 'checkedFieldsVisualizer',
+            type: 'ui',
+            admin: {
+              position: 'sidebar',
+              components: {
+                // Use the @ alias to avoid path resolution errors
+                Field: '@/components/FormSubmissionsOverride#FormSubmissionsOverride',
+              },
+            },
+          },
+        ],
+      },    
     formOverrides: {
       fields: ({ defaultFields }) => {
         return defaultFields.map((field) => {

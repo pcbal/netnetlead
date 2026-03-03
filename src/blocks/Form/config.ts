@@ -40,6 +40,17 @@ export const FormBlock: Block = {
       }),
       label: 'Intro Content',
     },
+    // in your collection fields array
+{
+  name: 'status',
+  type: 'select',
+  defaultValue: 'new',
+  options: [
+    { label: 'New', value: 'new' },
+    { label: 'Contacted', value: 'contacted' },
+    { label: 'In Progress', value: 'in-progress' },
+  ],
+},
   ],
   graphQL: {
     singularName: 'FormBlock',

@@ -44,10 +44,10 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
 
   return (
     <header
-      className="absolute top-0 left-0 w-full z-50 bg-black/40 backdrop-blur-sm"
-      {...(theme ? { 'data-theme': theme } : {})}
-    >
-      <div className="py-4 md:py-5 flex justify-between items-center">
+  className="fixed top-0 left-0 w-full z-50 backdrop-blur-md bg-black/30"
+  {...(theme ? { 'data-theme': theme } : {})}
+>
+      <div className="container mx-auto px-6 py-3 flex justify-between items-center">
         <Link href="/">
           <Logo loading="eager" priority="high" className="invert dark:invert-0" />
         </Link>

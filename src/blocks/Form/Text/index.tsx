@@ -8,25 +8,43 @@ import React from 'react'
 import { Error } from '../Error'
 import { Width } from '../Width'
 
-export const Text: React.FC<
-  TextField & {
-    errors: Partial<FieldErrorsImpl>
-    register: UseFormRegister<FieldValues>
-  }
-> = ({ name, defaultValue, errors, label, register, required, width }) => {
+export const Text: React.FC<any> = ({
+  name,
+  label,
+  required,
+  register,
+  errors,
+}) => {
   return (
-    <Width width={width}>
-      <Label htmlFor={name}>
-        {label}
+    <div className="space-y-2">
+      {label && (
+        <label className="block text-sm font-medium">
+          {label} {required && '*'}
+        </label>
+      )}
 
-        {required && (
-          <span className="required">
-            * <span className="sr-only">(required)</span>
-          </span>
-        )}
-      </Label>
-      <Input defaultValue={defaultValue} id={name} type="text" {...register(name, { required })} />
-      {errors[name] && <Error name={name} />}
-    </Width>
+      <input
+        {...register(name, { required })}
+        className={`
+          w-full
+          rounded-lg
+          border
+          px-4
+          py-3
+          text-sm
+          transition
+          outline-none
+          focus:ring-2
+          focus:ring-primary
+          ${errors?.[name] ? 'border-red-500' : 'border-border'}
+        `}
+      />
+
+      {errors?.[name] && (
+        <p className="text-sm text-red-500">
+          This field is required
+        </p>
+      )}
+    </div>
   )
 }
